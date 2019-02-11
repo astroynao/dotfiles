@@ -1,0 +1,90 @@
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+
+" Required:
+set runtimepath+=/home/astrofox/.cache/repos/github.com/Shougo/dein.vim
+
+" Required:
+if dein#load_state('/home/astrofox/.cache')
+  call dein#begin('/home/astrofox/.cache')
+
+  " Let dein manage dein
+  " Required:
+  call dein#add('/home/astrofox/.cache/repos/github.com/Shougo/dein.vim')
+
+  " Add or remove your plugins here like this:
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('davidhalter/jedi-vim')
+
+  call dein#add('w0ng/vim-hybrid')
+  call dein#add('itchyny/lightline.vim')
+
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('Xuyuanp/nerdtree-git-plugin') 
+
+  call dein#add('vim-airline/vim-airline')
+  call dein#add('vim-airline/vim-airline-themes')
+  call dein#add('bling/vim-bufferline')
+
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
+
+ " Programming tools
+  call dein#add('tpope/vim-fugitive')     " How you use git as a vim user
+  call dein#add('airblade/vim-gitgutter') " Shows edits from git in gutter
+  call dein#add('rizzatti/dash.vim')      " Dash is amazing for lookups
+  call dein#add('scrooloose/syntastic')   " Global Syntax test
+  call dein#add('blueyed/delimitMate')    " Autoadding closing braces
+  call dein#add('janko-m/vim-test')
+  call dein#add('Vimjas/vim-python-pep8-indent')
+  call dein#add('nvie/vim-flake8')
+  call dein#add('jsfaint/gen_tags.vim')
+  call dein#add('fatih/vim-go')
+  call dein#add('Shougo/deoplete.nvim')
+  call dein#add('zchee/deoplete-go')
+  call dein#add('roxma/nvim-yarp')
+  call dein#add('roxma/vim-hug-neovim-rpc')
+
+  
+  call dein#add('w0rp/ale')
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
+
+"End dein Scripts-------------------------
+
+set background=dark
+colorscheme hybrid
+
+let g:lightline = {
+  \'active': {
+  \  'left': [
+  \    ['mode', 'paste'],
+  \    ['readonly', 'filename', 'modified', 'ale'],
+  \  ]
+  \},
+  \'component_function': {
+  \  'ale': 'ALEGetStatusLine'
+  \}
+\ }
+
+let g:ale_linters = {
+\   'python': ['flake8'],
+\}
+
+let g:syntastic_python_checkers = ["flake8"]
+let g:deoplete#enable_at_startup = 1
